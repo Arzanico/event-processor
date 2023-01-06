@@ -19,12 +19,21 @@ func (p Processor) Process(event server.Event) (string, error) {
 
 type RealTimeRequest struct{}
 
-func (r RealTimeRequest) Process(event server.Event) (string, error) {
+func (r RealTimeRequest) ProcessEvent(event server.Event) (string, error) {
 	fmt.Println("Define RealTime behavior")
 	return "done", nil
 }
 
-func Process(event server.Event) (string, error) {
-	fmt.Println(event.Id)
-	return *event.Type, nil
+type PushNotification struct{}
+
+func (p PushNotification) ProcessEvent(event server.Event) (string, error) {
+	fmt.Println("Define PushNotification behavior")
+	return "done", nil
+}
+
+type InitialUpload struct{}
+
+func (i InitialUpload) ProcessEvent(event server.Event) (string, error) {
+	fmt.Println("Define InitialLoad behavior")
+	return "done", nil
 }
